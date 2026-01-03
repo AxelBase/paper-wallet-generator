@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AxelBase – Premium Converter</title>
+    <link rel="icon" href="../../AxelLab-Logo.ico" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    
+		<link href="../../_app/immutable/assets/0.BfydMCoV.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/7.CHU7tbEs.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.DYeuSYas.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/yQr3R6_R.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CTBj1of8.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/D_dGICBY.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/oAkPtHcR.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.BdbQ-oxw.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/C6_Yvl47.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/9GQ5lURB.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CTTngGDe.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.Cgqd_QYK.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B6pr0Rtx.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Cakp_Jc6.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/QUIXCsb4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/1UPcjnW0.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/7.C7_HzTrs.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/NHXmZ4D4.js"><!--led0iy--><meta name="description" content="A technical breakdown of how the tool creates standard Bitcoin addresses starting with '1' using proven hashing algorithms."/> <meta property="og:title" content="Generating Legacy P2PKH Bitcoin Addresses | Paper Wallet Insights"/> <meta property="og:description" content="A technical breakdown of how the tool creates standard Bitcoin addresses starting with '1' using proven hashing algorithms."/> <meta property="og:url" content="../../blog/posts/post4"/> <meta property="og:type" content="article"/> <meta name="twitter:card" content="summary_large_image"/><!----><title>Generating Legacy P2PKH Bitcoin Addresses | Paper Wallet Insights</title>
+  </head>
+  <body data-bs-theme="light" data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!----><header class="fixed-top p-3 w-100" style="z-index: 1040;"><nav class="container glass rounded-pill px-4 py-2 d-flex justify-content-between align-items-center shadow-sm" style="max-width: 1200px;"><div class="d-flex align-items-center gap-3"><a href="../../" class="d-flex align-items-center gap-2 logo-group text-decoration-none svelte-12qhfyh"><img src="../../AxelLab-Logo.ico" alt="Logo" style="height: 32px; transition: transform 0.3s;" class="logo-img svelte-12qhfyh"/> <span class="fw-bold fs-5" style="color: var(--color-text-main);">AxelBase</span></a> <div class="position-relative"><button class="btn btn-coffee rounded-pill d-flex align-items-center gap-2 svelte-12qhfyh"><i class="bi bi-cup-hot-fill"></i> <span class="d-none d-md-inline">Support</span></button> <!--[!--><!--]--></div></div> <div class="d-flex align-items-center gap-2"><ul class="nav d-none d-lg-flex align-items-center gap-1 m-0"><li><a class="nav-link-custom svelte-12qhfyh" href="../../">Home</a></li> <li><a class="nav-link-custom svelte-12qhfyh" href="../../#about">About</a></li> <li><a class="nav-link-custom svelte-12qhfyh" href="../../#how-to-use">How to Use</a></li> <li><a class="nav-link-custom svelte-12qhfyh" href="../../#faq">FAQ</a></li> <li class="ms-2"><a class="btn btn-primary btn-sm rounded-pill px-3" href="../../blog">Blog</a></li></ul> <div class="vr mx-2 d-none d-lg-block"></div> <button class="btn-theme-toggle svelte-12qhfyh" aria-label="Toggle Dark Mode"><i class="bi bi-moon-stars-fill"></i></button></div></nav></header> <main class="pt-5 mt-5"><!--[--><!----><div class="container fade-in post-layout svelte-led0iy"><div class="breadcrumbs svelte-led0iy"><a href="../../blog" class="svelte-led0iy">Blog</a> <span>/</span> <p class="svelte-led0iy">Generating Legacy P2PKH Bitcoin Addresses</p></div> <article class="prose svelte-led0iy"><h1 class="svelte-led0iy">Generating Legacy P2PKH Bitcoin Addresses</h1> <p class="post-meta svelte-led0iy">Published: January 03, 2026</p> <p class="svelte-led0iy">Legacy Bitcoin addresses, also known as Pay-to-Public-Key-Hash or P2PKH addresses, remain the most widely recognized and supported format in the Bitcoin ecosystem. These addresses always begin with the number 1 and provide a reliable way to receive funds across virtually all wallets and services. The Simple Paper Wallet Generator produces exactly these addresses to ensure maximum compatibility.</p> <p class="svelte-led0iy">The process begins with a securely generated 256-bit private key. Using the secp256k1 elliptic curve, the corresponding public key is derived. This public key is then compressed to a 33-byte format, which is the standard for modern Bitcoin transactions. Compression reduces size while preserving all necessary information for verification.</p> <p class="svelte-led0iy">Next, the compressed public key undergoes a double hashing process. First, it is passed through the SHA-256 algorithm, producing a 32-byte hash. This output is then fed into the RIPEMD-160 hash function, resulting in a 20-byte hash known as the public key hash. This double-hash approach provides strong collision resistance and security properties established over years of cryptographic review.</p> <p class="svelte-led0iy">A version byte of 0x00 is prepended to the 20-byte hash, indicating a mainnet P2PKH address. To enable error detection, a 4-byte checksum is calculated by taking the first four bytes of the double SHA-256 hash of the versioned payload. This checksum is appended, creating a final 25-byte structure.</p> <p class="svelte-led0iy">The complete 25-byte payload is then encoded using Base58Check encoding. This format uses a specific alphabet that avoids visually similar characters, reducing transcription errors when addresses are written or typed manually. The result is the familiar address starting with 1, typically 26 to 35 characters long.</p> <p class="svelte-led0iy">Legacy addresses continue to offer excellent security and are fully supported by the Bitcoin network. While newer formats like Bech32 offer advantages in error correction and lower fees for certain transactions, P2PKH addresses remain the safest choice for long-term cold storage due to their universal acceptance across all wallet implementations.</p> <p class="svelte-led0iy">The tool displays both the full address string and a QR code encoding the same information. The QR code follows the standard bitcoin URI scheme when scanned by compatible wallets, allowing seamless receiving of funds. Users can verify the address format by confirming it begins with 1 and matches the expected length.</p> <p class="svelte-led0iy">This methodical process ensures that every address generated is valid, unique, and ready for immediate use. The combination of established cryptographic primitives and careful implementation provides confidence that funds sent to these addresses can be accessed only with the corresponding private key.</p> <p class="svelte-led0iy">Legacy P2PKH addresses strike an optimal balance between security, compatibility, and simplicity, making them ideal for paper wallet applications.</p> <h2 class="svelte-led0iy">FAQ</h2> <details class="svelte-led0iy"><summary class="svelte-led0iy">Why do addresses start with 1?</summary> <p class="svelte-led0iy">The leading 1 results from the version byte 0x00 in Base58Check encoding for mainnet P2PKH addresses.</p></details> <details class="svelte-led0iy"><summary class="svelte-led0iy">Are legacy addresses still secure?</summary> <p class="svelte-led0iy">Yes, they use the same strong cryptography as newer formats and remain fully secure for holding funds.</p></details> <details class="svelte-led0iy"><summary class="svelte-led0iy">Can I send to this address from any wallet?</summary> <p class="svelte-led0iy">Yes, all Bitcoin wallets and services support sending to legacy P2PKH addresses.</p></details> <p class="italic-note svelte-led0iy">Always double-check the first and last characters when verifying addresses.</p></article></div><!----><!--]--></main> <footer class="glass border-top py-4 mt-5"><div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center small text-muted"><span>© 2026 AxelBase Markdown to HTML Converter</span> <div class="d-flex gap-4 mt-2 mt-sm-0"><a href="../../privacy" class="footer-link svelte-12qhfyh">Privacy</a> <a href="../../terms" class="footer-link svelte-12qhfyh">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_z141ir = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/paper-wallet-generator"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.DYeuSYas.js"),
+						import("../../_app/immutable/entry/app.BdbQ-oxw.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 7],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
