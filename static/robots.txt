@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://axelbase.github.io/paper-wallet-generator/sitemap.xml
+Sitemap: https://paper-wallet-generator.vercel.app/sitemap.xml

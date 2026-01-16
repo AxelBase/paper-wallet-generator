@@ -1,7 +1,7 @@
 <script lang="ts">
   import '../app.css';
   import { base } from '$app/paths';
-  import { slide, fade } from 'svelte/transition';
+  import { slide, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
 
   let isDropdownOpen = false;
@@ -38,31 +38,46 @@
       </a>
 
       <div class="position-relative" use:clickOutside on:click_outside={closeDropdown}>
-        <button class="btn btn-coffee rounded-pill d-flex align-items-center gap-2" on:click={toggleDropdown}>
+        <button
+          class="bmac-button d-flex align-items-center gap-2 text-white border-0 px-4 py-2 rounded-pill shadow-sm"
+          on:click={toggleDropdown}
+          aria-label="Support options"
+        >
           <i class="bi bi-cup-hot-fill"></i>
-          <span class="d-none d-md-inline">Support</span>
+          <span class="d-none d-md-inline fw-semibold">Buy me a Coffee</span>
         </button>
 
         {#if isDropdownOpen}
-          <div class="dropdown-menu-custom glass" transition:slide>
+          <div 
+            class="bmac-dropdown glass mt-2" 
+            transition:fly={{ y: -10, duration: 250 }}
+          >
             <a href="https://buymeacoffee.com/axelbase" target="_blank" rel="noopener" on:click={closeDropdown}>
-              <span class="amount">$3</span> <span>One Coffee</span>
+              <span class="amount">$3</span> One Coffee
             </a>
             <a href="https://buymeacoffee.com/axelbase" target="_blank" rel="noopener" on:click={closeDropdown}>
-              <span class="amount">$5</span> <span>Two Coffees</span>
+              <span class="amount">$5</span> Two Coffees
             </a>
             <a href="https://buymeacoffee.com/axelbase" target="_blank" rel="noopener" on:click={closeDropdown}>
-              <span class="amount">$10</span> <span>Three Coffees</span>
+              <span class="amount">$10</span> Three Coffees
             </a>
-            <a href="https://buymeacoffee.com/axelbase" target="_blank" rel="noopener" on:click={closeDropdown} class="custom-amount">
+
+            <a 
+              href="https://buymeacoffee.com/axelbase" 
+              target="_blank" 
+              rel="noopener" 
+              on:click={closeDropdown} 
+              class="custom-amount"
+            >
               Custom Amount
             </a>
+
             <a
               href="bitcoin:bc1q3p0e6vt492m4w4fpz5m2cl4zcfuqqkgaj6myc9?label=AxelBase&message=Buy%20me%20a%20coffee"
               on:click={closeDropdown}
-              class="crypto-link"
+              class="custom-amount crypto-link"
             >
-              <i class="bi bi-currency-bitcoin"></i> Buy via Crypto
+              Buy via Crypto (Bitcoin)
             </a>
           </div>
         {/if}
@@ -93,7 +108,7 @@
 
 <footer class="glass border-top py-4 mt-5">
   <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center small text-muted">
-    <span>&copy; {new Date().getFullYear()} AxelBase Markdown to HTML Converter</span>
+    <span>© {new Date().getFullYear()} AxelBase Markdown to HTML Converter</span>
     <div class="d-flex gap-4 mt-2 mt-sm-0">
       <a href="{base}/privacy" class="footer-link">Privacy</a>
       <a href="{base}/terms" class="footer-link">Terms</a>
@@ -102,8 +117,85 @@
 </footer>
 
 <style>
+  /* ── Buy Me a Coffee Button (inspired by File 1 but adapted) ── */
+  .bmac-button {
+    background: var(--color-accent);
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 184, 148, 0.25);
+  }
+
+  .bmac-button:hover {
+    background: color-mix(in srgb, var(--color-accent) 85%, black);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 25px rgba(0, 184, 148, 0.35);
+  }
+
+  /* ── Dropdown (blend of both files) ── */
+  .bmac-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 1050;
+    padding: 0.4rem 0;
+  }
+
+  .bmac-dropdown a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 18px;
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.22s ease;
+  }
+
+  .bmac-dropdown a:hover {
+    background: var(--color-accent);
+    color: white;
+    padding-left: 24px;
+  }
+
+  .bmac-dropdown .amount {
+    font-weight: 800;
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    min-width: 48px;
+  }
+
+  .bmac-dropdown a:hover .amount {
+    color: white;
+  }
+
+  .bmac-dropdown .custom-amount {
+    font-weight: 600;
+    color: var(--color-accent);
+    border-top: 1px solid var(--glass-border);
+    margin-top: 6px;
+    padding-top: 14px !important;
+    justify-content: center !important;
+  }
+
+  /* Crypto link specific style */
+  .crypto-link {
+    color: #f7931a !important;
+    background: rgba(247, 147, 26, 0.08);
+  }
+
+  .crypto-link:hover {
+    background: #f7931a !important;
+    color: white !important;
+  }
+
+  /* Existing styles (kept + small adjustments) */
   .logo-group:hover .logo-img { transform: rotate(15deg) scale(1.2); }
-  
+
   .nav-link-custom {
     padding: 0.5rem 1rem;
     color: var(--color-text-muted);
@@ -112,75 +204,10 @@
     transition: color 0.3s, transform 0.3s;
     display: inline-block;
   }
-  .nav-link-custom:hover { color: var(--color-accent); transform: translateY(-2px); }
 
-  .btn-coffee {
-    background: #ffdd00;
-    color: #000;
-    border: none;
-    font-weight: 700;
-    font-size: 0.85rem;
-    box-shadow: 0 4px 15px rgba(255, 221, 0, 0.2);
-  }
-  .btn-coffee:hover { transform: translateY(-2px) scale(1.05); background: #ffe44d; }
-
-  .dropdown-menu-custom {
-    position: absolute;
-    top: 120%;
-    left: 0;
-    min-width: 220px;
-    padding: 0.6rem;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    z-index: 1050;
-  }
-
-  .dropdown-menu-custom a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
-    color: var(--color-text-main);
-    padding: 10px 14px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-  }
-
-  .dropdown-menu-custom a:hover { 
-    background: var(--color-accent); 
-    color: white; 
-    transform: translateX(4px);
-  }
-
-  .amount {
-    font-weight: 800;
-    color: var(--color-accent);
-  }
-  .dropdown-menu-custom a:hover .amount {
-    color: white;
-  }
-
-  .custom-amount {
-    border-top: 1px solid var(--glass-border);
-    margin-top: 4px;
-    padding-top: 12px !important;
-    font-weight: 600;
-    justify-content: center !important;
-  }
-
-  .crypto-link {
-    justify-content: center !important;
-    font-weight: 600;
-    background: rgba(247, 147, 26, 0.1);
-    color: #f7931a !important;
-  }
-
-  .crypto-link:hover {
-    background: #f7931a !important;
-    color: white !important;
+  .nav-link-custom:hover { 
+    color: var(--color-accent); 
+    transform: translateY(-2px); 
   }
 
   .btn-theme-toggle {
@@ -195,7 +222,12 @@
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
-  .btn-theme-toggle:hover { transform: rotate(20deg) scale(1.1); background: var(--color-accent); color: white; }
+
+  .btn-theme-toggle:hover { 
+    transform: rotate(20deg) scale(1.1); 
+    background: var(--color-accent); 
+    color: white; 
+  }
 
   .footer-link { color: var(--color-text-muted); text-decoration: none; }
   .footer-link:hover { color: var(--color-accent); }
